@@ -6,13 +6,13 @@ from wordcloud import WordCloud  # For generating word clouds
 import matplotlib.pyplot as plt  # For displaying the word cloud
 
 # Function to initialize the summarization pipeline dynamically
-def initialize_summarizer(model_name="facebook/bart-large-cnn"):
+def initialize_summarizer(model_name="t5-small"):
     """
     Initialize the Hugging Face summarization pipeline with the selected model.
     :param model_name: Name of the model to use for summarization.
     :return: Summarization pipeline object.
     """
-    return pipeline("summarization", model=model_name)
+    return pipeline("summarization", model=model_name, device=-1)  # Force CPU usage
 
 # Function to extract text from a PDF
 def extract_text_from_pdf(uploaded_file):
